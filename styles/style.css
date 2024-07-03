@@ -17,7 +17,7 @@ html {
   font-size: 18px;
   background-color: #1b1919;
   display: grid;
-  justify-content: center;
+  place-items: center center;
 }
 
 h1,
@@ -50,12 +50,12 @@ ol {
   position: relative;
   width: 711px;
   height: 386px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .result__video {
-  height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .search-form {
@@ -71,7 +71,7 @@ ol {
 }
 
 .content__details {
-  width: 100%;
+  width: 534px;
 }
 
 .content__video-card-thumbnail {
@@ -79,19 +79,28 @@ ol {
   width: 194px;
 }
 
+.content__card-link:active {
+  background-color: rgba(84, 80, 80, 1);
+}
+.content__card-link:focus-visible {
+  outline-offset: -1px;
+  outline: #fff solid 1px;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
 .content__list-item {
   margin-bottom: 30px;
 }
 
-.content__list-item:focus {
-  outline: none;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-}
-
-
 .content__list-item:last-child {
   margin: 0;
+}
+
+.content__list-item:focus {
+  outline: none;
 }
 
 .content__video-card {
@@ -108,12 +117,12 @@ ol {
 }
 
 .title {
-  font-family: "Oswald";
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 75px;
   line-height: 70px;
   text-transform: uppercase;
-  margin-bottom: 26px;
+  margin-bottom: 23px;
 }
 
 .content__accent {
@@ -123,20 +132,34 @@ ol {
 .content__card-link {
   text-decoration: none;
   color: #fff;
+  display: block;
 }
 
 .content__video-card-title {
   text-transform: uppercase;
-  font-family: "Oswald";
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 30px;
   margin-bottom: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
 }
 
 .content__video-card-description {
   line-height: 16.2px;
   font-size: 18px;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.content__video-card-description-container {
+  max-width: 200px;
+  height: 100%;
+  width: 100%;
 }
 
 .visually-hidden {
@@ -149,7 +172,7 @@ ol {
   white-space: nowrap;
 }
 
-fieldset {
+.search-form__fieldset {
   border: none;
 }
 
@@ -160,8 +183,7 @@ fieldset {
   gap: 5px;
 }
 
-
-input {
+.search-form__textfield {
   width: 225px;
   background-color: transparent;
   font-family: 'Fira Sans Condensed', sans-serif;;
@@ -175,25 +197,16 @@ input {
   appearance: none;
 }
 
-input:active {
+.search-form__textfield:active {
   outline: 1px solid #fff;
 }
 
-input:focus {
+.search-form__textfield:focus {
   outline: none;
 }
 
-input:has(:focus-visible) {
-outline: 1px solid #fff;
-}
-
-input[type='checkbox']:checked + span {
-  width: 15px;
-  height: 15px;
-  background-color: #fff;
+.search-form__textfield:has(:focus-visible) {
   outline: 1px solid #fff;
-  outline-offset: 1px;
-  background-position: center;
 }
 
 .search-form__pseudo-checkbox {
@@ -202,9 +215,21 @@ input[type='checkbox']:checked + span {
   width: 19px;
   border: 1px solid white;
   display: inline-block;
+  align-self: center;
 }
  
+.search-form__checkbox[type='checkbox']:checked + span {
+  margin-left: 2px;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+  background-position: center;
+}
+
 .search-form__checkbox-list {
+  height: 19px;
   width: 212px;
   display: flex;
   gap: 15px;
@@ -227,27 +252,13 @@ input[type='checkbox']:checked + span {
   height: 34px;
 }
 
-.search-form__submit-button {
-  width: 194px;
-  margin-top: 18px;
-}
-
 .more-button {
   width: 100%;
 }
 
-.search-form__label:has(:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
-}
-
-.search-form__label:hover {
-  border-bottom: 1px solid white;
-}
-
-.search-form__label-text:has(:focus-visible) {
-  outline: 1px solid #fff;
-  outline-offset: 1px;
+.button:active {
+  background-color: rgba(84, 80, 80, 1);
+  ;
 }
 
 .button:focus-visible {
@@ -255,14 +266,25 @@ input[type='checkbox']:checked + span {
   outline-offset: 1px;
 }
 
-.content__card-link {
-  display: block;
+.button:hover {
+  text-decoration: underline;
 }
 
-.content__card-link:active {
-  background-color: rgba(84, 80, 80, 1);
+.search-form__submit-button {
+  width: 194px;
+  margin-top: 18px;
 }
 
-.content__card-link_current:active {
-  background-color: rgba(84, 80, 80, 1);
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label:hover .search-form__label-text {
+  border-bottom: 1px solid white;
+}
+
+.search-form__label-text:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
 }
